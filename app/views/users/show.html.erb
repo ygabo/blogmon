@@ -16,3 +16,15 @@
     </ul>
 <% end %>
 
+<div id="blog-user-profile">
+<% @user.posts.each do |post| %>
+    <div id="blog-entry"> 
+        <span id="blog-entry-meta">
+            <span id="blog-entry-title"><h5><%= link_to post.title, post %></h5></span>
+            <span id="blog-entry-timestamp">  <i class="icon-calendar">  </i><%= post.created_at.to_formatted_s(:long_ordinal) %></span>
+        </span>
+        <div id="blog-entry-content"><%= post.entry %></div>      
+    </div>
+<% end %>
+</div>
+

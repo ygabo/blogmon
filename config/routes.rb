@@ -1,4 +1,5 @@
 Blog::Application.routes.draw do
+  
   resources :friendships
   resources :posts
 
@@ -8,4 +9,5 @@ Blog::Application.routes.draw do
   root :to => "posts#index"
   devise_for :users
   resources :users
+  
 end

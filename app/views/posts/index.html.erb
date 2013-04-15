@@ -6,7 +6,7 @@
         <% if current_user.id == post.user_id %>
             <span id="blog-entry-author"><i class="icon-user"> </i> <%= link_to current_user.name, current_user %> </span>
         <% else %>
-            <span id="blog-entry-author"><i class="icon-user"> </i> <%= current_user.friends.find(post.user_id).name %></span>
+            <span id="blog-entry-author"><i class="icon-user"> </i> <%= link_to current_user.friends.find(post.user_id).name, user_path(post.user_id) %></span>
         <% end %>
         <span id="blog-entry-timestamp">  <i class="icon-calendar">  </i><%= post.created_at.to_formatted_s(:long_ordinal) %></span>
         </span>

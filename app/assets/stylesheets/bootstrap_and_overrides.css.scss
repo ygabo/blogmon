@@ -1,5 +1,5 @@
 @import "bootstrap";
-body { padding-top: 60px; }
+body { padding-top: 60px; background-image:url('/assets/black_linen.png'); }
 
 .nav > li > a:hover, .nav > li > a:focus {
     color: black;
@@ -11,4 +11,12 @@ h3 {
     line-height: 20px;
 }
 
+.navbar navbar-fixed-top {
+   color: #333;
+  background-color: #ffffff;
+}
+
+.container {
+    width: 940px;
+}
 @import "bootstrap-responsive";

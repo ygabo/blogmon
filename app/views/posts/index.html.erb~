@@ -8,7 +8,7 @@
         <% else %>
             <span id="blog-entry-author"><i class="icon-user"> </i> <%= current_user.friends.find(post.user_id).name %></span>
         <% end %>
-        <span id="blog-entry-timestamp"><i class="icon-calendar">  </i><%= post.created_at.to_formatted_s(:long_ordinal) %></span>
+        <span id="blog-entry-timestamp">  <i class="icon-calendar">  </i><%= post.created_at.to_formatted_s(:long_ordinal) %></span>
         </span>
         <div id="blog-entry-content"><%= post.entry %></div>      
     </div>

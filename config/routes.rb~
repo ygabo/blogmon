@@ -1,9 +1,8 @@
 Blog::Application.routes.draw do
+  match ':id/blog' => "users#show_blog"
+  
   resources :friendships
-
-
   resources :posts
-
 
   authenticated :user do
     root :to => 'posts#index'
@@ -11,4 +10,5 @@ Blog::Application.routes.draw do
   root :to => "posts#index"
   devise_for :users
   resources :users
+  
 end
