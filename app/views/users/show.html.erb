@@ -1,16 +1,18 @@
-<h3>User</h3>
-<p>User: <%= @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+
+<p><h4> <%= @user.name %></h4></p>
+<p><%= @user.email if @user.email %></p>
 <br>
-<h4> Following </h4>
-<ul>
-  <% for friendship in @user.friendships %>
-   <li>
-    <%= friendship.friend.name %>
-    <% if current_user.id == @user.id %>
-        <%= link_to "(x)", friendship, :method => :delete %>
-    <% end %>
-   </li>
-  <% end %>
-</ul>
+<% if @user.friendships.count > 0 %>
+    <h5> Following </h5>
+    <ul>
+      <% for friendship in @user.friendships %>
+       <li>
+        <%= friendship.friend.name %>
+        <% if current_user.id == @user.id %>
+            <%= link_to "(x)", friendship, :method => :delete %>
+        <% end %>
+       </li>
+      <% end %>
+    </ul>
+<% end %>
 
