@@ -8,7 +8,7 @@ class PostsController < ApplicationController
         @posts += friend.posts
       end
       
-      @posts = @posts.sort_by { |post| post.created_at }
+      @posts = @posts.sort_by { |post| post.created_at }.reverse
       respond_to do |format|
         format.html # index.html.erb
         format.json { render json: @posts }
@@ -32,11 +32,15 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.json
   def new
-    @post = Post.new
+    if user_signed_in?
+        @post = Post.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @post }
+        respond_to do |format|
+          format.html # new.html.erb
+          format.json { render json: @post }
+        end
+    else
+        redirect_to new_user_session_path
     end
   end
 

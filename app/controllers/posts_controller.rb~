@@ -14,7 +14,7 @@ class PostsController < ApplicationController
         format.json { render json: @posts }
       end
     else
-      redirect_to new_session_path
+      redirect_to new_user_session_path
     end
   end
 
@@ -32,11 +32,15 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.json
   def new
-    @post = Post.new
+    if user_signed_in?
+        @post = Post.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @post }
+        respond_to do |format|
+          format.html # new.html.erb
+          format.json { render json: @post }
+        end
+    else
+        redirect_to new_user_session_path
     end
   end
 

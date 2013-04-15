@@ -3,6 +3,12 @@ body { padding-top: 60px; }
 
 .nav > li > a:hover, .nav > li > a:focus {
     color: black;
-    background-color: rgb(238, 238, 238);
+    background-color: #ccc ;
 }
+
+h3 {
+    margin: 0px 0px 4px;
+    line-height: 20px;
+}
+
 @import "bootstrap-responsive";

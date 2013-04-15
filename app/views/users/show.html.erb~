@@ -7,7 +7,9 @@
   <% for friendship in @user.friendships %>
    <li>
     <%= friendship.friend.name %>
-    <%= link_to "(x)", friendship, :method => :destroy %>
+    <% if current_user.id == @user.id %>
+    <%= link_to "(x)", friendship, :method => :delete %>
+    <% end %>
    </li>
   <% end %>
 </ul>
