@@ -1,0 +1,14 @@
+<h3>User</h3>
+<p>User: <%= @user.name %></p>
+<p>Email: <%= @user.email if @user.email %></p>
+<br>
+<h4> Following </h4>
+<ul>
+  <% for friendship in @user.friendships %>
+   <li>
+    <%= friendship.friend.name %>
+    <%= link_to "(x)", friendship, :method => :delete %>
+   </li>
+  <% end %>
+</ul>
+
