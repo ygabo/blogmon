@@ -1,3 +1,8 @@
 @import "bootstrap";
 body { padding-top: 60px; }
+
+.nav > li > a:hover, .nav > li > a:focus {
+    color: black;
+    background-color: rgb(238, 238, 238);
+}
 @import "bootstrap-responsive";
