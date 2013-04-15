@@ -8,6 +8,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @posts.each do |post| %>
@@ -15,16 +16,15 @@
     <td><%= post.title %></td>
     <td><%= post.entry %></td>
     <% if current_user.id == post.user_id %>
-      <td> <% current_user.name %> </td>
+      <td> <%= current_user.name %> </td>
     <% else %>
       <td><%= current_user.friends.find(post.user_id).name %> </td>
     <% end %>
+    <td><%= post.created_at.to_formatted_s(:rfc822) %></td>
     <td><%= link_to 'Show', post %></td>
-    <% if user_signed_in? %>
-      <% if post.user_id == current_user.id %>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <% end %>
+    <% if post.user_id == current_user.id %>
+      <td><%= link_to 'Edit', edit_post_path(post) %></td>
+      <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <% end %>
   </tr>
 <% end %>

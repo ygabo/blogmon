@@ -8,12 +8,13 @@ class PostsController < ApplicationController
         @posts += friend.posts
       end
       
+      @posts = @posts.sort_by { |post| post.created_at }
       respond_to do |format|
         format.html # index.html.erb
         format.json { render json: @posts }
       end
     else
-      redirect_to session_create_path
+      redirect_to new_user_session_path
     end
   end
 
