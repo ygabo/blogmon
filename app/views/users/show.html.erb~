@@ -1,6 +1,5 @@
 
-<p><h4> <%= @user.name %></h4></p>
-<p><%= @user.email if @user.email %></p>
+<p><h4><%= @user.name %></h4></p>
 <br>
 <% if @user.friendships.count > 0 %>
     <h5> Following </h5>
@@ -9,7 +8,7 @@
        <li>
         <%= friendship.friend.name %>
         <% if current_user.id == @user.id %>
-            <%= link_to "(x)", friendship, :method => :delete %>
+            <%= link_to "Unfollow", friendship, :method => :delete, :class => 'btn btn-mini btn-danger' %>
         <% end %>
        </li>
       <% end %>
@@ -20,7 +19,7 @@
 <% @user.posts.each do |post| %>
     <div id="blog-entry"> 
         <span id="blog-entry-meta">
-            <span id="blog-entry-title"><strong><%= link_to post.title, post %></strong></span>
+            <span id="blog-entry-title"><h5><%= link_to post.title, post %></h5></span>
             <span id="blog-entry-timestamp">  <i class="icon-calendar">  </i><%= post.created_at.to_formatted_s(:long_ordinal) %></span>
         </span>
         <div id="blog-entry-content"><%= post.entry %></div>      

@@ -7,7 +7,7 @@
       <th>Email</th>
       <th>Registered</th>
       <th></th>
-      <% if user.admin? %>
+      <% if current_user.admin? %>
         <th>Role</th>
         <th></th>
         <th></th>
@@ -20,7 +20,7 @@
       <td><%= link_to user.name, user %></td>
       <td><%= user.email %></td>
       <td><%= user.created_at.to_date %></td>
-      <td><%= link_to( "Add", friendships_path({:friend_id => user.id}), :data => { :confirm => "Are you sure?" }, :method => :post, :class => 'btn btn-mini') unless user == current_user %></td>
+      <td><%= link_to( "Add", friendships_path({:friend_id => user.id}), :data => { :confirm => "Are you sure?" }, :method => :post, :class => 'btn btn-mini btn-primary') unless user == current_user %></td>
       <% if user.admin? %>
         <td><%= user.roles.first.name.titleize unless user.roles.first.nil? %></td>
         <td>
