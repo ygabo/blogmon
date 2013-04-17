@@ -3,10 +3,16 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     if user_signed_in?
-      @posts = current_user.posts
+      if current_user.user_blog.blank?
+        current_user.user_blog = UserBlog.new
+        current_user.user_blog.save
+      end
+      @posts = current_user.user_blog.posts
       if !params[:id]
-          for friend in current_user.friends 
-            @posts += friend.posts
+          for friend in current_user.friends
+            if friend.user_blog.present?
+                @posts += friend.user_blog.posts
+            end
           end
       end     
       
@@ -36,7 +42,7 @@ class PostsController < ApplicationController
   def new
     if user_signed_in?
         @post = Post.new
-
+        
         respond_to do |format|
           format.html # new.html.erb
           format.json { render json: @post }
@@ -54,8 +60,14 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(params[:post])   
+    if !current_user.user_blog.present?
+        current_user.user_blog = UserBlog.new(:user_id => current_user.id)
+        current_user.user_blog.save
+    end
+    
+    @post = Post.new(params[:post])
     @post.user_id = current_user.id
+    @post.user_blog_id = current_user.user_blog.id
     
     respond_to do |format|
       if @post.save

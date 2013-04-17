@@ -1,5 +1,8 @@
 Blog::Application.routes.draw do
   
+  resources :user_blogs
+
+
   resources :friendships
   resources :posts
 

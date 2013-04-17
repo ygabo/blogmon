@@ -3,7 +3,7 @@
 <br>
 
 <div id="blog-user-profile">
-<% @user.posts.each do |post| %>
+<% @user.user_blog.posts.each do |post| %>
     <div id="blog-entry"> 
         <span id="blog-entry-meta">
             <span id="blog-entry-title"><h5><%= link_to post.title, post %></h5></span>
