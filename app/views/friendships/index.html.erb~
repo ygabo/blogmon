@@ -1,0 +1,23 @@
+<h3>Following</h3>
+<div class="span8">
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Registered</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% for friendship in @friendships %>
+    <tr>
+      <% friend = friendship.friend %>
+      <td><%= link_to friend.name, friend %></td>
+      <td><%= friend.email %></td>
+      <td><%= friend.created_at.to_date %></td>
+      <td> <%= link_to "Unfollow", friendship, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => 'btn btn-mini btn-danger' %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,19 +1,6 @@
 
 <p><h4><%= @user.name %></h4></p>
 <br>
-<% if @user.friendships.count > 0 %>
-    <h5> Following </h5>
-    <ul>
-      <% for friendship in @user.friendships %>
-       <li>
-        <%= link_to friendship.friend.name, user_path(friendship.friend.id)%>
-        <% if current_user.id == @user.id %>
-            <%= link_to "Unfollow", friendship, :method => :delete, :class => 'btn btn-mini btn-danger' %>
-        <% end %>
-       </li>
-      <% end %>
-    </ul>
-<% end %>
 
 <div id="blog-user-profile">
 <% @user.posts.each do |post| %>
