@@ -81,7 +81,7 @@ class FriendshipsController < ApplicationController
     @friendship.destroy
 
     respond_to do |format|
-      format.html { redirect_to current_user, notice: 'Unfollowed successfully.' }
+      format.html { redirect_to :back, notice: 'Unfollowed successfully.' }
       format.json { head :no_content }
     end
   end

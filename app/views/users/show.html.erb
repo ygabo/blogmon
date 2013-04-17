@@ -6,7 +6,7 @@
     <ul>
       <% for friendship in @user.friendships %>
        <li>
-        <%= link_to friendship.friend.name, user_path(friendship.friend.id) %>
+        <%= link_to friendship.friend.name, user_path(friendship.friend.id)%>
         <% if current_user.id == @user.id %>
             <%= link_to "Unfollow", friendship, :method => :delete, :class => 'btn btn-mini btn-danger' %>
         <% end %>

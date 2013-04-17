@@ -59,7 +59,6 @@ class FriendshipsController < ApplicationController
     if current_user.friendships.exists?({:friend_id => params[:friend_id]})
       flash[:error] = "Following already."
       redirect_to users_path
-    end
     else
       @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
       
@@ -78,11 +77,11 @@ class FriendshipsController < ApplicationController
   # DELETE /friendships/1
   # DELETE /friendships/1.json
   def destroy
-    @friendship = current_user.friendships.find(params[:id])
+    @friendship = current_user.friendships.find(params[:friend_id])
     @friendship.destroy
 
     respond_to do |format|
-      format.html { redirect_to current_user, notice: 'Unfollowed successfully.' }
+      format.html { redirect_to :back, notice: 'Unfollowed successfully.' }
       format.json { head :no_content }
     end
   end
