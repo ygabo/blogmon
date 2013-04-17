@@ -1,7 +1,7 @@
 <ul class="nav nav-list">
   <li class="nav-header">Blog</li>
   <li><%= link_to "Blog Stream", root_path %></li>
-  <li><%= link_to "My Blog", current_user %></li>
+  <li><%= link_to "My Blog", posts_path(:id => current_user.id) %></li>
   <li><%= link_to "Create Post", new_post_path %></li>
   <li class="nav-header">Social</li>
   <li><%= link_to "Following", friendships_path %></li>

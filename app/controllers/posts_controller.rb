@@ -4,9 +4,14 @@ class PostsController < ApplicationController
   def index
     if user_signed_in?
       @posts = current_user.posts
-      for friend in current_user.friends
-        @posts += friend.posts
+      if !params[:id]
+          for friend in current_user.friends 
+            @posts += friend.posts
+          end
       end
+      
+      
+     
       
       @posts = @posts.sort_by { |post| post.created_at }.reverse
       respond_to do |format|
