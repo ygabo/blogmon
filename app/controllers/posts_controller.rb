@@ -8,10 +8,7 @@ class PostsController < ApplicationController
           for friend in current_user.friends 
             @posts += friend.posts
           end
-      end
-      
-      
-     
+      end     
       
       @posts = @posts.sort_by { |post| post.created_at }.reverse
       respond_to do |format|

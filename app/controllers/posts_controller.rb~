@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def index
     if user_signed_in?
       @posts = current_user.posts
-      if !params[:user_id]
+      if !params[:id]
           for friend in current_user.friends 
             @posts += friend.posts
           end
