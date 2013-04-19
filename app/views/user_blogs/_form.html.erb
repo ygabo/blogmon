@@ -2,11 +2,11 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :blog_title %>
-    <%= f.input :about_me %>
+    <%= f.input :blog_title, label: 'Blog Name:'  %>
+    <%= f.input :about_me, label: 'Describe yourself:'  %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.submit 'Save', class: 'btn btn-primary' %>
   </div>
 <% end %>

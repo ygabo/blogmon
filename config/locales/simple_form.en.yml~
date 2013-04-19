@@ -17,7 +17,7 @@ en:
           email: 'E-mail.'
       user_blogs:
         edit:
-          blog_title: 'Blog Title:sdsd'
+          blog_title: 'Blog Title:'
     hints:
       defaults:
         username: 'User name to sign in.'

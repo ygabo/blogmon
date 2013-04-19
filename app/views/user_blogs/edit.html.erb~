@@ -1,6 +1,4 @@
-<h1>Editing post</h1>
+<div class="text-center"><h1>Editing Blog Profile</h1></div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @user_blog %> |
-<%= link_to 'Back', :back %>
