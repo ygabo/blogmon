@@ -21,9 +21,13 @@
       <div class="container">
         <div class="content">
                    <div class="row-fluid">
-                        
+                                  
                                   <div id="navleft" class="span2">
-                                    <%= render 'layouts/navleft' %>
+                                    <% if user_signed_in? %>
+                                      <%= render 'layouts/navleft' %>
+                                    <% else %>
+                                      <div class="text-center"><h4>Log in!</h4></div>
+                                    <% end %>
                                   </div>
                                   <div id="main_content" class="span8">
                                     <%= render 'layouts/messages' %>

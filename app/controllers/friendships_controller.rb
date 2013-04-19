@@ -64,7 +64,7 @@ class FriendshipsController < ApplicationController
       
       respond_to do |format|
         if @friendship.save
-          format.html { redirect_to users_path, notice: 'Successfully followed.' }
+          format.html { redirect_to :back, notice: 'Successfully followed.' }
           format.json { render json: @friendship, status: :created, location: @friendship }
         else
           format.html { redirect_to users_path, error: 'Follow failed.' }

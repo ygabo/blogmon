@@ -2,7 +2,7 @@ class FriendshipsController < ApplicationController
   # GET /friendships
   # GET /friendships.json
   def index
-    @friendships = Friendship.all
+    @friendships = current_user.friendships
 
     respond_to do |format|
       format.html # index.html.erb

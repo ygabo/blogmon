@@ -1,7 +1,12 @@
 
-<p><h2><div class="text-center"><%= @user.name %></h2></p>
+<p><h2><div class="text-center"><%= @user.name %></div></h2></p>
 
-<p><h5> Blog: </h5><%= link_to @user.user_blog.blog_title, @user.user_blog %></p>
+<p><h5> Blog: </h5>
+<% unless @user.user_blog.blank? %>
+  None </p>
+<% else %>
+  <%= link_to @user.user_blog.blog_title, @user.user_blog %></p>
+<% end %>
 <p><h5> About Me: </h5><%= @user.user_blog.about_me %></p>
 
 <p><h5> Posts: </h5></p>
