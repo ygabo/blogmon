@@ -1,16 +1,33 @@
 
-<p><h4><%= @user.name %></h4></p>
-<br>
+<p><h2><div class="text-center"><%= @user.name %></div></h2></p>
 
-<div id="blog-user-profile">
-<% @user.user_blog.posts.each do |post| %>
-    <div id="blog-entry"> 
-        <span id="blog-entry-meta">
-            <span id="blog-entry-title"><h5><%= link_to post.title, post %></h5></span>
-            <span id="blog-entry-timestamp">  <i class="icon-calendar">  </i><%= post.created_at.to_formatted_s(:long_ordinal) %></span>
-        </span>
-        <div id="blog-entry-content"><%= post.entry %></div>      
-    </div>
-<% end %>
+<p><h5> Blog: </h5><%= link_to @user.user_blog.blog_title, @user.user_blog %></p>
+<p><h5> About Me: </h5><%= @user.user_blog.about_me %></p>
+
+<p><h5> Posts: </h5></p>
+<div id="blog-user-profile" class="content">
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Posted</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% count = 1 %>
+    <% @user.user_blog.posts.take(3).each do |post| %>
+    <tr>
+      <td><%= count %></td>
+      <td><span id="blog-entry-title"><%= link_to post.title, post %></td>
+      <td><span id="blog-entry-timestamp"><%= post.created_at.to_formatted_s(:long_ordinal) %></td>
+    </tr>
+    <% count += 1 %>
+  <% end %>
+    <tr>
+    <td colspan="3"><div class="text-center"> <%= link_to "View all posts", @user.user_blog %> </div></td>
+    </tr>
+  </tbody>
+</table>
 </div>
 

@@ -1,29 +1,18 @@
-<h1>Listing user_blogs</h1>
-
-<table>
-  <tr>
-    <th>User</th>
-    <th>Post</th>
-    <th>Create</th>
-    <th>Destroy</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @user_blogs.each do |user_blog| %>
-  <tr>
-    <td><%= user_blog.user_id %></td>
-    <td><%= user_blog.post_id %></td>
-    <td><%= user_blog.create %></td>
-    <td><%= user_blog.destroy %></td>
-    <td><%= link_to 'Show', user_blog %></td>
-    <td><%= link_to 'Edit', edit_user_blog_path(user_blog) %></td>
-    <td><%= link_to 'Destroy', user_blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<div id="user-blog">
+<div class="text-center"><h2><%= current_user.user_blog.blog_title %></h2></div>
+<% @posts.each do |post| %>
+    <blockquote>
+        <div id="blog-entry-title"><h3><%= link_to post.title, post %></h3></div>
+        <span id="blog-entry-meta">
+        <span id="blog-entry-timestamp">  <i class="icon-calendar">  </i><%= post.created_at.to_formatted_s(:long_ordinal) %></span>
+        <% if current_user.id == post.user_id %>
+            <span id="blog-entry-author"><i class="icon-user"> </i> <%= link_to current_user.name, current_user %> </span>
+        <% else %>
+            <span id="blog-entry-author"><i class="icon-user"> </i> <%= link_to current_user.friends.find(post.user_id).name, user_path(post.user_id) %></span>
+        <% end %>
+        </span>
+        <div id="blog-entry-content"><%= post.entry.html_safe %></div>      
+    </blockquote>
 <% end %>
-</table>
+</div>
 
-<br />
-
-<%= link_to 'New User blog', new_user_blog_path %>

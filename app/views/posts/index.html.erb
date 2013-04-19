@@ -1,17 +1,17 @@
 <div id="blog">
 <% @posts.each do |post| %>
-    <div id="blog-entry">
+    <blockquote>
         <div id="blog-entry-title"><h3><%= link_to post.title, post %></h3></div>
         <span id="blog-entry-meta">
+        <span id="blog-entry-timestamp">  <i class="icon-calendar">  </i><%= post.created_at.to_formatted_s(:long_ordinal) %></span>
         <% if current_user.id == post.user_id %>
             <span id="blog-entry-author"><i class="icon-user"> </i> <%= link_to current_user.name, current_user %> </span>
         <% else %>
             <span id="blog-entry-author"><i class="icon-user"> </i> <%= link_to current_user.friends.find(post.user_id).name, user_path(post.user_id) %></span>
-        <% end %>
-        <span id="blog-entry-timestamp">  <i class="icon-calendar">  </i><%= post.created_at.to_formatted_s(:long_ordinal) %></span>
+        <% end %>        
         </span>
-        <div id="blog-entry-content"><%= post.entry %></div>      
-    </div>
+        <div id="blog-entry-content"><%= post.entry.html_safe %></div>      
+    </blockquote>
 <% end %>
 </div>
 
