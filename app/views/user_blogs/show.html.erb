@@ -1,10 +1,10 @@
 <div id="user-blog">
 <div class="text-center"><h2><%= @user_blog.blog_title %></h2></div>
-<% @user_blog.posts.each do |post| %>
+<% @posts.each do |post| %>
     <blockquote>
         <div id="blog-entry-title"><h3><%= link_to post.title, post %></h3></div>
             <span id="blog-entry-meta">
-            <span id="blog-entry-timestamp">  <i class="icon-calendar">  </i><%= post.created_at.to_formatted_s(:long_ordinal) %></span>
+            <span id="blog-entry-timestamp">  <i class="icon-calendar">  </i><%= link_to post.created_at.to_formatted_s(:long_ordinal), post %></span>
             <span id="blog-entry-author"><i class="icon-user"> </i> <%= link_to  @user.name,  @user %> </span>
         </span>
         <div id="blog-entry-content"><%= post.entry.html_safe %></div>      

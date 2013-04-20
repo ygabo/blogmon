@@ -9,7 +9,7 @@
             <span id="blog-entry-author"><i class="icon-user"> </i> <%= link_to current_user.name, current_user %> </span>
         <% else %>
             <span id="blog-entry-author"><i class="icon-user"> </i> <%= link_to current_user.friends.find(post.user_id).name, user_path(post.user_id) %></span>
-        <% end %>        
+        <% end %>
         </span>
         <div id="blog-entry-content"><%= post.entry.html_safe %></div>      
     </blockquote>

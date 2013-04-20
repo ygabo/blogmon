@@ -19,4 +19,11 @@ h3 {
 .container {
     width: 940px;
 }
+
+blockquote p {
+    margin-bottom: 0px;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.25;
+}
 @import "bootstrap-responsive";

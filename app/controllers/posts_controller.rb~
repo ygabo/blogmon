@@ -4,7 +4,9 @@ class PostsController < ApplicationController
   def index
     if user_signed_in?
       if current_user.user_blog.blank?
-        
+        current_user.user_blog = UserBlog.new
+        current_user.user_blog.save
+      end
       @posts = current_user.user_blog.posts
       if !params[:id]
           for friend in current_user.friends
@@ -28,7 +30,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
-
+    @user = User.find(@post.user_id)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @post }

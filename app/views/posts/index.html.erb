@@ -3,7 +3,7 @@
     <blockquote>
         <div id="blog-entry-title"><h3><%= link_to post.title, post %></h3></div>
         <span id="blog-entry-meta">
-        <span id="blog-entry-timestamp">  <i class="icon-calendar">  </i><%= post.created_at.to_formatted_s(:long_ordinal) %></span>
+        <span id="blog-entry-timestamp">  <i class="icon-calendar">  </i><%= link_to post.created_at.to_formatted_s(:long_ordinal), post %></span>
         <% if current_user.id == post.user_id %>
             <span id="blog-entry-author"><i class="icon-user"> </i> <%= link_to current_user.name, current_user %> </span>
         <% else %>

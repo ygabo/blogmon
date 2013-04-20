@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Title:</b>
   <%= @post.title %>
@@ -7,9 +5,11 @@
 
 <p>
   <b>Entry:</b>
-  <%= @post.entry %>
+  <%= @post.entry.html_safe %>
 </p>
 
 
+<% if current_user.id == @user.id %>
 <%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<% end %>
+

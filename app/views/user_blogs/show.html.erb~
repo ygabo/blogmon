@@ -1,6 +1,6 @@
 <div id="user-blog">
-<div class="text-center"><h2><%= @user.user_blog.blog_title %></h2></div>
-<% @user_blog.posts.each do |post| %>
+<div class="text-center"><h2><%= @user_blog.blog_title %></h2></div>
+<% @posts.each do |post| %>
     <blockquote>
         <div id="blog-entry-title"><h3><%= link_to post.title, post %></h3></div>
             <span id="blog-entry-meta">

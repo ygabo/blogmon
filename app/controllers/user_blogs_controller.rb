@@ -2,7 +2,7 @@ class UserBlogsController < ApplicationController
   # GET /user_blogs
   # GET /user_blogs.json
   def index
-    @user_blogs = UserBlog.all
+    @user_blogs = current_user.user_blog
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class UserBlogsController < ApplicationController
   def show
     @user_blog = UserBlog.find(params[:id])
     @user = User.find(@user_blog.user_id)
-    
+    @posts = @user_blog.posts.sort_by { |post| post.created_at }.reverse
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user_blog }
