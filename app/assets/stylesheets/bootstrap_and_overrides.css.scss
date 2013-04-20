@@ -26,4 +26,12 @@ blockquote p {
     font-weight: 300;
     line-height: 1.25;
 }
+
+.form-actions {
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-color: rgb(204, 204, 204);
+    border-top: 0px solid rgb(229, 229, 229);
+}
 @import "bootstrap-responsive";

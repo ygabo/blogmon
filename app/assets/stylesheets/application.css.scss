@@ -55,3 +55,12 @@ padding-right: 6px;
 padding: 0px 0px 20px 0px;
 }
 
+
+.mceEditor td.mceIframeContainer iframe {
+    min-height: 350px !important;
+    height: auto !important;
+}
+
+.mceEditor table {
+    height: auto !important;
+}

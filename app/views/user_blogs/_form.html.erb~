@@ -1,12 +1,13 @@
+<%= tinymce %>
 <%= simple_form_for(@user_blog) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :blog_title, label: 'Blog Name:'  %>
-    <%= f.input :about_me, label: 'Describe yourself:'  %>
+    <%= f.input :about_me, label: 'Describe yourself:',:input_html => {:class => "tinymce", :rows => 40, :cols => 120}  %>
   </div>
 
   <div class="form-actions">
-    <%= f.submit 'Save', label_html: { class: 'btn btn-primary' }   %>
+    <%= f.submit 'Save', class: 'btn btn-primary' %>
   </div>
 <% end %>

@@ -1,13 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  
-  def create
-    super
-    @blog = Blog.create
-    @blog.save
     
-  end
-  
   def index
     authorize! :index, @user, :message => 'Not authorized as an administrator.'
     @users = User.all
@@ -17,6 +10,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @user_blog = @user.user_blog
+    @posts = @user_blog.posts.take(3).sort_by { |post| post.created_at }.reverse
   end
   
   def update
