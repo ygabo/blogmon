@@ -5,6 +5,10 @@ class UserBlog < ActiveRecord::Base
   has_many :posts
 
   def to_param
-  	"#{id}-#{blog_title.parameterize}" 
+  	if blog_title.blank?
+  		super
+  	else
+  		"#{id}-#{blog_title.parameterize}"
+  	end
   end
 end

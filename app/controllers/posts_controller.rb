@@ -7,14 +7,14 @@ class PostsController < ApplicationController
         current_user.user_blog = UserBlog.new
         current_user.user_blog.save
       end
-      @posts = current_user.user_blog.posts
-      if !params[:id]
-          for friend in current_user.friends
-            if friend.user_blog.present?
-                @posts += friend.user_blog.posts
-            end
-          end
-      end     
+
+      @posts = current_user.posts
+      @friends = current_user.friends.includes(:posts)
+      for friend in @friends
+        if friend.user_blog.present?
+          @posts += friend.posts
+        end
+      end  
       
       @posts = @posts.sort_by { |post| post.created_at }.reverse
       respond_to do |format|
@@ -55,7 +55,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
   end
 
   # POST /posts
@@ -84,7 +84,7 @@ class PostsController < ApplicationController
   # PUT /posts/1
   # PUT /posts/1.json
   def update
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
@@ -100,7 +100,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    @post = Post.find(params[:id])
+    @post = current_user.find(params[:id])
     @post.destroy
 
     respond_to do |format|
