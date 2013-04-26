@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @user_blog = @user.user_blog
-    @posts = @user_blog.posts.sort_by { |post| post.created_at }.reverse.take(3)
+    @posts = @user_blog.posts.take(3)
   end
   
   def update

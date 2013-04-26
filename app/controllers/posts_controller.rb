@@ -30,7 +30,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
-    @user = User.find(@post.user_id)
+    @user = @post.user
     
     respond_to do |format|
       format.html # show.html.erb

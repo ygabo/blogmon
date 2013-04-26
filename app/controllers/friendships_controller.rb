@@ -34,13 +34,13 @@ class FriendshipsController < ApplicationController
 
   # GET /friendships/1/edit
   def edit
-    @friendship = Friendship.find(params[:id])
+    @friendship = current_user.find(params[:id])
   end
 
   # PUT /friendships/1
   # PUT /friendships/1.json
   def update
-    @friendship = Friendship.find(params[:id])
+    @friendship = current_user.find(params[:id])
 
     respond_to do |format|
       if @friendship.update_attributes(params[:friendship])

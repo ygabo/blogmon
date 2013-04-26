@@ -13,9 +13,9 @@ class UserBlogsController < ApplicationController
   # GET /user_blogs/1
   # GET /user_blogs/1.json
   def show
-    @user_blog = UserBlog.find(params[:id], include: :posts)
-    @user = User.find(@user_blog.user_id)
-    @posts = @user_blog.posts.sort_by { |post| post.created_at }.reverse
+    @user_blog = UserBlog.find(params[:id], include: [:user, :posts])
+    @user = @user_blog.user
+    @posts = @user_blog.posts
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user_blog }

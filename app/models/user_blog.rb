@@ -3,4 +3,8 @@ class UserBlog < ActiveRecord::Base
   
   belongs_to :user
   has_many :posts
+
+  def to_param
+  	"#{id}-#{blog_title.parameterize}" 
+  end
 end
