@@ -11,7 +11,8 @@ Blog::Application.routes.draw do
     root :to => 'posts#index'
   end
   root :to => "posts#index", :param_name => "dash"
-  devise_for :users
+  
+  devise_for :users, :controllers => { :registrations => "registrations" }
   resources :users
   
 end
