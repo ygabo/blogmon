@@ -21,8 +21,4 @@ class User < ActiveRecord::Base
     "#{id}-#{name}" 
   end
 
-  def password_required?
-    super && password.blank?
-  end
-
 end
