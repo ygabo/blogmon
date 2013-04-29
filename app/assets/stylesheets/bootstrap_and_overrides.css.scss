@@ -1,5 +1,9 @@
 @import "bootstrap";
-body { padding-top: 60px; background-image:url('/assets/black_linen.png'); }
+body { 
+  padding-top: 60px; 
+  #background-image:url('/assets/black_linen.png');
+  background-color: black;
+}
 
 .nav > li > a:hover, .nav > li > a:focus {
     color: black;
@@ -13,7 +17,15 @@ h3 {
 
 .navbar navbar-fixed-top {
    color: #333;
-  background-color: #ffffff;
+   background-color: #252525;
+}
+
+.navbar-inner {
+  color: #333;
+  #background-color: #252525;
+  background-image: url('/assets/black_linen.png');
+  background-repeat: repeat-x;
+  border:none;
 }
 
 .container {
