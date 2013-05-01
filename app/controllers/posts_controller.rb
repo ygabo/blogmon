@@ -22,9 +22,9 @@ class PostsController < ApplicationController
         format.json { render json: @posts }
       end
     else
-      dash = User.where(name: 'yelnatz')
+      dash = User.where(name: 'yelnatz').first
       if dash
-        @posts = first.posts
+        @posts = dash.posts
       else
         redirect_to new_user_session_path
       end
