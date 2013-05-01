@@ -22,7 +22,7 @@ class PostsController < ApplicationController
         format.json { render json: @posts }
       end
     else
-      redirect_to new_user_session_path
+      @posts = User.find(5).posts
     end
   end
 
