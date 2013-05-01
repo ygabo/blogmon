@@ -4,7 +4,6 @@
   <thead>
     <tr>
       <th>Username</th>
-      <th>Email</th>
       <th>Registered</th>
       <th></th>
       <% if current_user.admin? %>
@@ -18,7 +17,6 @@
   <% @users.each do |user| %>
     <tr>
       <td><%= link_to user.name, user %></td>
-      <td><%= user.email %></td>
       <td><%= user.created_at.to_date %></td>
       <%# this is terrible, optimize this later -%>
       <% if !@my_friendships.exists?( {:friend_id => user.id} ) %>
