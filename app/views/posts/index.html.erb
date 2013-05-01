@@ -7,7 +7,7 @@
         <% if current_user && current_user.id == post.user_id %>
             <span id="blog-entry-author"><i class="icon-user"> </i> <%= link_to current_user.name, current_user %> </span>
         <% else %>
-            <span id="blog-entry-author"><i class="icon-user"> </i> <%= link_to post.user.name, user_path(post.user) %></span>
+            <span id="blog-entry-author"><i class="icon-user"> </i> <%= link_to post.user.name, user_path(post.user ) %></span>
         <% end %>        
         </span>
         <div id="blog-entry-content"><%= post.entry.html_safe %></div>      
