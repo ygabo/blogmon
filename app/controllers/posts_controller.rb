@@ -22,8 +22,12 @@ class PostsController < ApplicationController
         format.json { render json: @posts }
       end
     else
-      @posts = User.where(name: 'yelnatz').first.posts || nil
-      redirect_to new_user_session_path unless @posts
+      dash = User.where(name: 'yelnatz')
+      if dash
+        @posts = first.posts
+      else
+        redirect_to new_user_session_path
+      end
     end
   end
 
