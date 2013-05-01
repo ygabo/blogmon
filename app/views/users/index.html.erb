@@ -20,6 +20,7 @@
       <td><%= link_to user.name, user %></td>
       <td><%= user.email %></td>
       <td><%= user.created_at.to_date %></td>
+      <%# this is terrible, optimize this later -%>
       <% if !@my_friendships.exists?( {:friend_id => user.id} ) %>
          <td><%= link_to( "Follow", friendships_path({:friend_id => user.id}), 
                           :method => :post, :class => 'btn btn-mini btn-primary') unless user == current_user %></td>
