@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :name
   validates_uniqueness_of :email
+
+  after_create :create_blog
   
   has_one :user_blog
   has_many :posts, :through => :user_blog
@@ -22,6 +24,10 @@ class User < ActiveRecord::Base
 
   def to_param
     "#{id}-#{name}" 
+  end
+
+  def create_blog
+    UserBlog.create(user_id: id)
   end
 
 end

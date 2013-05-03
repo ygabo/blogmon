@@ -3,7 +3,7 @@ class UserBlogsController < ApplicationController
   # GET /user_blogs.json
   def index
     @user_blogs = current_user.user_blog
-
+    @posts = current_user.user_blog.posts || []
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @user_blogs }
