@@ -19,7 +19,8 @@ class PostsController < ApplicationController
       end  
       
       @posts = @posts.sort_by { |post| post.created_at }.reverse
-      current_page = params[:page] || 1
+      mypage = params[:page] || 1
+      @posts = Kaminari.paginate_array( @posts ).page( mypage ).per(5)
       respond_to do |format|
         format.html # index.html.erb
         format.json { render json: @posts }
